@@ -1,10 +1,7 @@
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Scanner;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 interface Expression {
 
@@ -57,6 +54,12 @@ public class Program {
         Developer developerFirst = developerFactory.get();
         System.out.printf("%s: %s with %s experience", developerFirst.getTitle(), developerFirst.getName(), developerFirst.getExperience());
 
+        BinaryOperator<Double> stepen = (x, y) -> Math.pow(x, y);
+        if ((stepen.apply(2.0, 3.0)) % 2 == 0) {
+            System.out.println("even");
+        } else {
+            System.out.println("odd");
+        }
     }
 
     private static void printNumbersDividedByThree(int[] numbers, Expression func) {
