@@ -1,19 +1,6 @@
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Scanner;
 import java.util.function.*;
-
-interface Expression {
-
-    boolean isDivided(int n);
-}
-
-class ExpressionHelper {
-
-    static boolean isDivided(int n) {
-        return n % 3 == 0;
-    }
-}
 
 public class Program {
 
@@ -36,11 +23,11 @@ public class Program {
         System.out.println(containsSubstring.test(strB));
         System.out.println(containsSubstring.test(strC));
 
-        Function<LocalDate, String> currentDate = x -> "Current date: " + String.valueOf(x);
+        Function<LocalDate, String> currentDate = x -> "Current date: " + x;
         System.out.println(currentDate.apply(LocalDate.now()));
 
-        Consumer<String> tomorrowDate = x -> System.out.printf("Tomorrow date: %s \n", x);
-        tomorrowDate.accept(LocalDate.now().plusDays(1).toString());
+        Consumer<LocalDate> tomorrowDate = x -> System.out.printf("Tomorrow date: %s \n", x);
+        tomorrowDate.accept(LocalDate.now().plusDays(1));
 
         Supplier<Developer> developerFactory = () -> {
             Scanner s = new Scanner(System.in);
@@ -52,9 +39,9 @@ public class Program {
         };
 
         Developer developerFirst = developerFactory.get();
-        System.out.printf("%s: %s with %s experience", developerFirst.getTitle(), developerFirst.getName(), developerFirst.getExperience());
+        System.out.println(developerFirst.toString());
 
-        BinaryOperator<Double> stepen = (x, y) -> Math.pow(x, y);
+        BinaryOperator<Double> stepen = Math::pow;
         if ((stepen.apply(2.0, 3.0)) % 2 == 0) {
             System.out.println("even");
         } else {
@@ -74,6 +61,4 @@ public class Program {
         double circleArea = Math.PI * Math.pow(radius, 2);
         return circleArea;
     }
-
-
 }

@@ -32,4 +32,9 @@ public class Developer {
     public void setExperience(String experience) {
         this.experience = experience;
     }
+
+    @Override
+    public String toString() {
+        return title + ": " + name + " with " + experience + " experience";
+    }
 }
